@@ -54,6 +54,7 @@ main.addEventListener("click", async (event) => {
   if (!button) return;
   await navigator.clipboard.writeText(button.textContent);
   for (const el of main.querySelectorAll(".copied")) el.classList.remove("copied");
+  void button.offsetWidth; // restart the flash when the same value is copied again
   button.classList.add("copied");
   status.textContent = "Copied";
   clearTimeout(button.timer);
