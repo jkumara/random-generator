@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <rect width="64" height="64" rx="14" fill="#1a1b26"/>
+  <path fill="#bb9af7" d="M26 8h12v6h-12zM20 14h24v6h-24zM14 20h36v6h-36zM8 26h12v6h-12zM26 26h12v6h-12zM44 26h12v6h-12zM8 32h48v6h-48zM20 38h6v6h-6zM38 38h6v6h-6zM14 44h6v6h-6zM26 44h12v6h-12zM44 44h6v6h-6zM8 50h6v6h-6zM20 50h6v6h-6zM38 50h6v6h-6zM50 50h6v6h-6z"/>
+</svg>

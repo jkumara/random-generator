@@ -1,0 +1,110 @@
+/* Tokyo Night: Night in dark mode, Day in light mode. */
+:root {
+  --bg: #1a1b26;
+  --key-bg: #292e42;
+  --key-hover: #343a55;
+  --line: #292e42;
+  --fg: #c0caf5;
+  --text: #a9b1d6;
+  --muted: #737aa2;
+  --accent: #bb9af7;
+  --ok: #9ece6a;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #e1e2e7;
+    --key-bg: #c4c8da;
+    --key-hover: #b6bbd1;
+    --line: #c4c8da;
+    --fg: #3760bf;
+    --text: #3b4261;
+    --muted: #6172b0;
+    --accent: #9854f1;
+    --ok: #587539;
+    color-scheme: light;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.35 ui-monospace, "SF Mono", "Hack Nerd Font", Menlo, Consolas, monospace;
+  -webkit-text-size-adjust: 100%;
+}
+
+header, main { max-width: 760px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+h1 { color: var(--fg); font-size: 20px; }
+.hint { color: var(--muted); font-size: 13px; margin-left: auto; }
+
+button { font: inherit; color: inherit; cursor: pointer; }
+#again {
+  color: var(--text);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 13px;
+}
+#again:hover { color: var(--accent); border-color: var(--accent); }
+
+main { padding-top: 24px; padding-bottom: 48px; }
+section + section { margin-top: 28px; }
+h2 {
+  color: var(--accent);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.meta { color: var(--muted); text-transform: none; letter-spacing: 0; font-weight: normal; margin-left: 8px; }
+
+ul { list-style: none; display: grid; gap: 6px; }
+.value {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: var(--fg);
+  background: var(--key-bg);
+  border: 0;
+  border-radius: 4px;
+  padding: 5px 10px;
+  word-break: break-all;
+}
+.value:hover { background: var(--key-hover); }
+.value:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* The label sits over the value's end instead of reserving room, so short
+   values don't wrap early on a phone. */
+.value::after {
+  content: "copied";
+  position: absolute;
+  top: 5px;
+  right: 0;
+  padding: 0 10px 0 16px;
+  color: var(--ok);
+  background: inherit;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.value.copied::after { opacity: 1; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+@media (max-width: 760px) {
+  header, main { padding-left: 16px; padding-right: 16px; }
+  .meta { display: block; margin: 2px 0 0; }
+}
